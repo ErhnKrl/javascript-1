@@ -57,15 +57,15 @@ try {
   const sharedTests = [
     { name: 'first', args: [0, 1], expected: 'truthy' },
     { name: 'second', args: [false, false], expected: 'falsey' },
-    { name: 'third', args: [" ", " "], expected: 'truthy' },
+    { name: 'third', args: ["", false], expected: 'falsey' },
     { name: 'fourth', args: [0, ""], expected: 'falsey' },
     { name: 'fifth', args: [" ", 1], expected: 'truthy' },
     // write a few more tests
-    { name: 'sixth', args: null, expected: null },
-    { name: 'seventh', args: null, expected: null },
-    { name: 'eighth', args: null, expected: null },
-    { name: 'ninth', args: null, expected: null },
-    { name: 'tenth', args: null, expected: null },
+    { name: 'first', args: [0, 1], expected: 'truthy' },
+    { name: 'second', args: [false, false], expected: 'falsey' },
+    { name: 'third', args: ["", false], expected: 'falsey' },
+    { name: 'fourth', args: [0, ""], expected: 'falsey' },
+    { name: 'fifth', args: [" ", 1], expected: 'truthy' },
   ];
 
   function ternaryExpression(a, b) {

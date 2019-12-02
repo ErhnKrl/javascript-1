@@ -21,7 +21,7 @@ try {
     declaredLetWithoutAssignment = 'assigned after declaration';
 
     // accessing a const/let variable before it is declared will error
-    declaredLetWithAssignment; // comment this line to remove the error!
+    //declaredLetWithAssignment; // comment this line to remove the error!
 
     // you will generally do both declaration and assignment at once
     // notice how this slot is only created when this line is reached?
@@ -37,7 +37,7 @@ try {
     // const errorTime; // uncomment this line to throw error!
 
     // const variables cannot be reassigned later in the program
-    constantVariable = 'error time';
+    //constantVariable = 'error time';
 
   }
   evaluate(example_declarationAndAssignment);
@@ -81,7 +81,10 @@ try {
     let temp = '';
 
     // can be done in 4 lines
-
+    temp = a;
+    a = b;
+    b = c;
+    c = temp;
 
     console.assert(a === 1, "a should store 1");
     console.assert(b === 2, "b should store 2");
@@ -95,6 +98,10 @@ try {
     let temp = '';
 
     // can be done in 4 lines
+    temp=a;
+    a=c;
+    c=b;
+    b=temp;
 
 
     console.assert(a === 1, "a should store 1");
@@ -109,7 +116,11 @@ try {
     let temp = '';
 
     // can be done in 5 lines
-
+    temp=a;
+    a=b;
+    b=c;
+    c=d;
+    d=temp;
 
     console.assert(a === 1, "a should store 1");
     console.assert(b === 2, "b should store 2");
@@ -124,6 +135,12 @@ try {
     let temp = '';
 
     // can be done in 6 lines
+    temp=b;
+    b=c;
+    c=temp;
+    temp=a;
+    a=d;
+    d=temp;
 
 
     console.assert(a === "w", "a should store 'w'");
@@ -139,6 +156,12 @@ try {
     let temp = ' ';
 
     // can be done in 6 lines
+    temp=b;
+    b=d;
+    d=temp;
+    temp=a;
+    a=e;
+    e=temp;
 
 
     console.assert(a === "v", "a should store 'v'");
@@ -188,7 +211,7 @@ try {
     let temp = '';
 
     // can be done in 1 line
-
+    temp=a, a=b, b=c, c=temp;
 
     console.assert(a === 1, "a should store 1");
     console.assert(b === 2, "b should store 2");
@@ -202,7 +225,7 @@ try {
     let temp = '';
 
     // can be done in 1 line
-
+    temp=a, a=c, c=b, b=temp;
 
     console.assert(a === 1, "a should store 1");
     console.assert(b === 2, "b should store 2");
@@ -216,7 +239,7 @@ try {
     let temp = '';
 
     // can be done in 1 line
-
+    temp=a, a=b, b=c, c=d, d=temp;
 
     console.assert(a === 1, "a should store 1");
     console.assert(b === 2, "b should store 2");
@@ -231,7 +254,7 @@ try {
     let temp = '';
 
     // can be done in 1 line
-
+    temp=a, a=d, d=temp, temp=b, b=c, c=temp; 
 
     console.assert(a === "w", "a should store 'w'");
     console.assert(b === "x", "b should store 'x'");
@@ -266,6 +289,9 @@ try {
 
     let a1 = a2 = 2, b = 1;
     let temp = '';
+    temp=b;
+    b=a1;
+    a1=a2=temp;
 
     // can be done in 3 lines or less
 
@@ -284,7 +310,10 @@ try {
     let temp = '';
 
     // can be done in 4 lines or less
-
+    temp=a;
+    a=b1;
+    b1=b2=c1;
+    c1=c2=c3=temp;
 
 
     console.assert(a === 1, 'a should store 1');

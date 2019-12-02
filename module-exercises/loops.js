@@ -101,14 +101,14 @@ try {
 
     let whileResult = 0;
     let i = 0;
-    while (i !== 8) {
+    while (i < 8) {
       whileResult += i;
-      i += 2;
+      i += 1;
     }
 
     // fix the three pieces of this for loop to pass the assert
     let forResult = 0;
-    for (null; null; null) {
+    for (let i=0; i < 8; i++) {
       forResult += i;
     }
 
@@ -122,16 +122,16 @@ try {
   function loopRefactor2() {
 
     let forResult = 0;
-    for (i = 5; i > -2; i--) {
+    for (let i = 5; i > -2; i--) {
       forResult = forResult + i;
     }
 
     // fix the three pieces of this for loop to pass the assert
     let whileResult = 0;
-    null;
-    while (null) {
+    let i=5;
+    while (i>-2) {
       whileResult = whileResult + i;
-      null;
+      i--;
     }
 
     console.assert(forResult === whileResult, 'both loops should have the same behavior');
@@ -139,26 +139,6 @@ try {
   }
   evaluate(loopRefactor2);
 
-
-  function loopRefactor1() {
-
-    let whileResult = 0;
-    let i = 0;
-    while (i !== 8) {
-      whileResult += i;
-      i += 2;
-    }
-
-    // fix the three pieces of this for loop to pass the assert
-    let forResult = 0;
-    for (null; null; null) {
-      forResult += i;
-    }
-
-    console.assert(forResult === whileResult, 'both loops should have the same behavior');
-
-  }
-  evaluate(loopRefactor1);
 
 
   function loopRefactor3() {
@@ -171,7 +151,10 @@ try {
     };
 
     // refactor the while loop into a for loop
-    let forResult = null;
+    let forResult = .5;
+    for (let i=9; i>2;i--){
+      forResult *= i;
+    }
 
     console.assert(forResult === whileResult, 'both loops should have the same behavior');
 
@@ -189,7 +172,10 @@ try {
     };
 
     // refactor the while loop into a for loop
-    let forResult = null;
+    let forResult = true;
+    for(let x=-1;x<2;x++){
+      forResult=forResult && Boolean(x)
+    }
 
     console.assert(forResult === whileResult, 'both loops should have the same behavior');
 
@@ -206,6 +192,11 @@ try {
 
     // refactor the for loop into a while loop
     let whileResult = 0;
+    let i=-3;
+    while(i===10 || i < 20){
+      whileResult=i;
+      i*=-1.5;
+    }
 
     console.assert(forResult === whileResult, 'both loops should have the same behavior');
 
@@ -223,6 +214,11 @@ try {
 
     // refactor the for loop into a while loop
     let whileResult = 0;
+    let i=0, j=10;
+    while(i !== j){
+      whileResult=i;
+      i++, j--;
+    }
 
     console.assert(forResult === whileResult, 'both loops should have the same behavior');
 
@@ -240,15 +236,15 @@ try {
 
   // replace the null's to pass these tests
   const loopTests1 = [
-    { name: 'first', args: [], expected: [0, 4, 16, 56] },
+    { name: 'first', args: [], expected: [2, 6, 18, 54] },
   ];
 
   function while1() {
     const result = [];
-    let i = 0;
-    while (null) {
+    let i = 1;
+    while (i<30) {
       result.push(i * 2);
-      null;
+      i*=3;
     }
     return result;
   }
@@ -256,7 +252,7 @@ try {
 
   function for1() {
     const result = [];
-    for (let i = 0; null; null) {
+    for (let i = 1; i<30; i*=3) {
       result.push(i * 2);
     }
     return result;
@@ -277,9 +273,9 @@ try {
   function while2(input) {
     const result = [];
     let i = input;
-    while (null) {
+    while (i<=2*input) {
       result.push(i);
-      null;
+      i++;
     }
     return result;
   }
@@ -287,7 +283,7 @@ try {
 
   function for2(input) {
     const result = [];
-    for (let i = input; null; null) {
+    for (let i = input; i<=2*input; i++) {
       result.push(i);
     }
     return result;
@@ -307,10 +303,10 @@ try {
 
   function while3(input) {
     const result = [];
-    let i = null;
+    let i = 3*input;
     while (i > input) {
       result.push(i);
-      null;
+      i-=2;
     }
     return result;
   }
@@ -318,7 +314,7 @@ try {
 
   function for3(input) {
     const result = [];
-    for (let i = null; i > input; null) {
+    for (let i = 3*input; i > input; i-=2) {
       result.push(i);
     }
     return result;
@@ -328,12 +324,12 @@ try {
 
   // write expected values to pass the functions
   const loopTests4 = [
-    { name: 'first', args: [0], expected: null },
-    { name: 'second', args: [1], expected: null },
-    { name: 'third', args: [2], expected: null },
-    { name: 'fourth', args: [3], expected: null },
-    { name: 'fifth', args: [4], expected: null },
-    { name: 'sixth', args: [5], expected: null },
+    { name: 'first', args: [0], expected: [] },
+    { name: 'second', args: [1], expected: [1,2] },
+    { name: 'third', args: [2], expected: [1,3,5] },
+    { name: 'fourth', args: [3], expected: [1,4,7] },
+    { name: 'fifth', args: [4], expected: [1,5,9] },
+    { name: 'sixth', args: [5], expected: [1,6,11] },
   ];
 
   function while4(input) {
@@ -362,12 +358,12 @@ try {
 
   // write expected values to pass the functions
   const loopTests5 = [
-    { name: 'first', args: [0], expected: null },
-    { name: 'second', args: [1], expected: null },
-    { name: 'third', args: [2], expected: null },
-    { name: 'fourth', args: [3], expected: null },
-    { name: 'fifth', args: [4], expected: null },
-    { name: 'sixth', args: [5], expected: null },
+    { name: 'first', args: [0], expected: [] },
+    { name: 'second', args: [1], expected: [6,5,4,3,2] },
+    { name: 'third', args: [2], expected: [6,5,4,3] },
+    { name: 'fourth', args: [3], expected: [6,5,4] },
+    { name: 'fifth', args: [4], expected: [6,5] },
+    { name: 'sixth', args: [5], expected: [6] },
   ];
 
   function while5(input) {

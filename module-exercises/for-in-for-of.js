@@ -95,7 +95,7 @@ try {
     const obj = { a: 0, b: 1, c: 2, d: 3 };
     console.log(obj);
 
-    for (let value of obj) {
+    for (let value in obj) {
       console.log(value);
     }
 
@@ -117,8 +117,8 @@ try {
     console.log('objValues:', objValues);
 
     let i = 0;
-    for (let prop of obj) {
-      const val = null; // fix this line
+    for (let prop in obj) {
+      let val = null; // fix this line
 
       console.assert(prop === objKeys[i], 'prop should strictly equal ' + objKeys[i]);
       console.assert(val === objValues[i], 'val should strictly equal ' + objValues[i]);
