@@ -17,8 +17,12 @@ function sortHandler() {
   // read and process user input (this works, no need to change it!)
   const toSort = document.getElementById('sort-input').value;
 
+  let myarray = toSort.split("");
+
+  let sortedArray = myarray.sort();
+
   // pass user input through core logic (write this! it doesn't work)
-  const sorted = `sort the charecters in ${toSort}`;
+  const sorted = `sort the charecters in ${sortedArray}`;
 
   // report result to user (this works, no need to change it!)
   const outputField = document.getElementById('sort-output');

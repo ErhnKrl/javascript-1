@@ -19,13 +19,19 @@ function repeatHandler() {
 
   const rawNumInput = document.getElementById('repeat-number-input').value;
   const numOfRepetitions = Number(rawNumInput);
+  let myRepeated = "";
   if (numOfRepetitions !== numOfRepetitions) {
     throw new TypeError('second input to "repeat it" must be a number');
+  } else {
+    
+    for (let i = 0; i < numOfRepetitions; i++) {
+      myRepeated += " " + strToRepeat; 
+    };
   }
 
 
   // pass user input through core logic (write this! it doesn't work)
-  const repeated = `repeat ${strToRepeat} ${numOfRepetitions} times`;
+  const repeated = `Repetition of ${strToRepeat} times is equals to ${myRepeated}`;
 
   // report result to user (this works, no need to change it!)
   const outputField = document.getElementById('repeat-output');

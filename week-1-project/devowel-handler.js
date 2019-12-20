@@ -15,9 +15,12 @@ function devowelHandler() {
 
   // read and process user input (this works, no need to change it!)
   const toDevowel = document.getElementById('devowel-input').value;
+  
+  let myArray = toDevowel.split('a').join('').split('e').join('').split('i').join('').split('o').join('').split('u');
 
+  
   // pass user input through core logic (write this! it doesn't work)
-  const devoweled = `remove all vowels from ${toDevowel}`;
+  const devoweled = `remove all vowels from ${myArray}`;
 
   // report result to user (this works, no need to change it!)
   const outputField = document.getElementById('devowel-output');
