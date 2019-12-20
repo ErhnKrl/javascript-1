@@ -18,8 +18,18 @@ const caesarizeTests = [
   { name: 'seventh', args: ["#@&&^F*(#", 7], expected: '#@&&^M*(#' },
 ];
 function caesarize(str, shiftNum) {
+  let text = "";
+  let myArray = str.split("");
+  myArray.forEach(element => {
+    let charCode = element.charCodeAt();
+    let newCharCode = charCode + shiftNum;
+    text = text + String.fromCharCode(newCharCode);
+  });
+  return text;
   // write me!
-}
+};
+
+console.log(caesarize("anne", 2));
 evaluate(caesarize, caesarizeTests);
 
 

@@ -23,8 +23,31 @@ const constantizeTests = [
   { name: 'sixth', args: ['ALREADY_A_CONSTANT'], expected: 'ALREADY_A_CONSTANT' },
 ];
 function constantize(str) {
+  let myArray = str.split("");
+  let myNewArray = [];
+  myNewArray = myArray.map(element => {
+    let charCode = Number(element.charCodeAt());
+    if (charCode > 96 && charCode < 123 || charCode > 65 && charCode < 91) {
+      element = element;
+    } else {
+      element = "_"
+    }
+    return element;
+  });
+    for (let i=0; i<myNewArray.length; i++) {
+      if(myNewArray[i+1] === myNewArray[i] && myNewArray[i+1] === "_") {
+        //console.log(myNewArray[i+2]);
+        myNewArray.splice(i,1);
+      }
+    };
+    let newStr;
+    newStr = myNewArray.join("");
+    newStr = newStr.toUpperCase();
+    return newStr;
   // write me!
-}
+};
+//console.log(constantize("erhan koral"));
+
 evaluate(constantize, constantizeTests);
 
 

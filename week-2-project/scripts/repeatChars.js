@@ -17,7 +17,30 @@ const repeatCharsTests = [
   { name: 'seventh', args: [' '], expected: '    ' },
 ];
 function repeatChars(str) {
-  // write this!
+  let myArray = str.split("");
+  let repeatTime;
+  let charCode;
+  let myNewArray = [];
+  let myNewString;
+  myArray.forEach(element => {
+    charCode = Number(element.charCodeAt());
+    if (charCode >= 65 && charCode <= 90) {
+      repeatTime = 2;
+    } else if (charCode >= 97 && charCode <= 122) {
+      repeatTime = 2;
+    } else if (charCode >= 48 && charCode <= 57) {
+      repeatTime = 3;
+    } else {
+      repeatTime = 4;
+    }
+  
+  for(let i = 0; i<repeatTime; i++){
+    myNewArray.push(element);
+  };
+  myNewString = myNewArray.join("");
+
+  });
+  return myNewString;
 }
 evaluate(repeatChars, repeatCharsTests);
 
