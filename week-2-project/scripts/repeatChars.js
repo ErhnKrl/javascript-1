@@ -13,16 +13,18 @@ const repeatCharsTests = [
   { name: 'third', args: ['%-*>'], expected: '%%%%----****>>>>' },
   { name: 'fourth', args: ['h3LL0 W@r!|)'], expected: 'hh333LLLL000    WW@@@@rr!!!!||||))))' },
   { name: 'fifth', args: ['{:-<*>-:}'], expected: '{{{{::::----<<<<****>>>>----::::}}}}' },
-  { name: 'sixth', args: [''], expected: '' },
+  { name: 'sixth', args: [""], expected: "" },
   { name: 'seventh', args: [' '], expected: '    ' },
 ];
 function repeatChars(str) {
-  let myArray = str.split("");
+  // write this!
+  let arr = str.split("");
   let repeatTime;
   let charCode;
-  let myNewArray = [];
-  let myNewString;
-  myArray.forEach(element => {
+  let repetedstring = [];
+
+  arr.forEach(element => {
+    //console.log(element.charCodeAt());
     charCode = Number(element.charCodeAt());
     if (charCode >= 65 && charCode <= 90) {
       repeatTime = 2;
@@ -33,14 +35,15 @@ function repeatChars(str) {
     } else {
       repeatTime = 4;
     }
-  
-  for(let i = 0; i<repeatTime; i++){
-    myNewArray.push(element);
-  };
-  myNewString = myNewArray.join("");
-
+    //now we setup correct repeat times. We can use it with for
+    let i;
+    let repeatedElement = "";
+    for (i = 0; i < repeatTime; i++) {
+      repeatedElement = repeatedElement + element;
+    }
+    repetedstring.push(repeatedElement);
   });
-  return myNewString;
+  return repetedstring.join("");
 }
 evaluate(repeatChars, repeatCharsTests);
 

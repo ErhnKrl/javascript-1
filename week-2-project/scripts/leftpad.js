@@ -30,6 +30,24 @@ const leftpadTests = [
 ];
 function leftpad(str, len, pad) {
   // write me!
+  let lenStr = str.length;
+  let padedStr = '';
+
+  if (lenStr >= len) {
+    padedStr = str.substring(0, len);
+  } else {
+    let nmrPAdRequired = len - lenStr;
+    pad = pad
+      .split('')
+      .reverse()
+      .join('');
+    //without using array I am checking str with for.
+    for (let i = 0; i <= nmrPAdRequired - 1; i++) {
+      padedStr = pad[i % pad.length] + padedStr; //if required pad > pad, pad should return again last character. For this reason I used mod.
+    }
+    padedStr = padedStr + str;
+  }
+  return padedStr;
 }
 evaluate(leftpad, leftpadTests);
 

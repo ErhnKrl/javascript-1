@@ -18,18 +18,27 @@ const caesarizeTests = [
   { name: 'seventh', args: ["#@&&^F*(#", 7], expected: '#@&&^M*(#' },
 ];
 function caesarize(str, shiftNum) {
-  let text = "";
-  let myArray = str.split("");
-  myArray.forEach(element => {
-    let charCode = element.charCodeAt();
-    let newCharCode = charCode + shiftNum;
-    text = text + String.fromCharCode(newCharCode);
+  let caesarText = '';
+  let tmpArr = str.split('');
+  let caesarArr = tmpArr.map(function(element) {
+    let nmr = element.charCodeAt(0);
+    if (65 <= nmr && nmr <= 90) {
+      shiftNum >= 0
+        ? (nmr = 65 + ((nmr - 65 + shiftNum) % 26))
+        : (nmr = 90 - (Math.abs(90 - nmr - shiftNum) % 26));
+      caesarText = caesarText + String.fromCharCode(nmr);
+    } else if (97 <= nmr && nmr <= 122) {
+      shiftNum >= 0
+        ? (nmr = 97 + ((nmr - 97 + shiftNum) % 26))
+        : (nmr = 122 - (Math.abs(122 - nmr - shiftNum) % 26));
+      caesarText = caesarText + String.fromCharCode(nmr);
+    } else {
+      caesarText = caesarText + element;
+    }
   });
-  return text;
-  // write me!
-};
+  return caesarText;
+}
 
-console.log(caesarize("anne", 2));
 evaluate(caesarize, caesarizeTests);
 
 

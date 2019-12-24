@@ -23,25 +23,29 @@ const constantizeTests = [
   { name: 'sixth', args: ['ALREADY_A_CONSTANT'], expected: 'ALREADY_A_CONSTANT' },
 ];
 function constantize(str) {
-  let myArray = str.split("");
-  let myNewArray = [];
-  myNewArray = myArray.map(element => {
-    let charCode = Number(element.charCodeAt());
-    if (charCode > 96 && charCode < 123 || charCode > 65 && charCode < 91) {
-      element = element;
-    } else {
-      element = "_"
+  // write me!
+
+  const arrStr = str.split("");
+  // str = str.toUpperCase;
+
+  let arrTemp = arrStr.map(function(element) {
+    let elCode = element.charCodeAt(0);
+    if ((65 > elCode || elCode > 90) && (97 > elCode || elCode > 122)) {
+      element =
+        element === " " || element === "_" ? " " : element.replace(element, "");
     }
     return element;
   });
-    for (let i=0; i<myNewArray.length; i++) {
+    /*for (let i=0; i<myNewArray.length; i++) {
       if(myNewArray[i+1] === myNewArray[i] && myNewArray[i+1] === "_") {
         //console.log(myNewArray[i+2]);
         myNewArray.splice(i,1);
       }
-    };
+    };*/
     let newStr;
-    newStr = myNewArray.join("");
+    newStr = arrTemp.join("");
+    newStr = newStr.replace(/\s{2,}/g, " ");
+    newStr = newStr.replace(/\ /g, "_");
     newStr = newStr.toUpperCase();
     return newStr;
   // write me!
