@@ -29,5 +29,11 @@ function scramble(str) {
     this is a an exercise to practice using breaking large problems into smaller ones
     and then solving the smaller problems and combining the small solutions into a full solution
   */
+  //const chunkArr = chunk(str);
+  //const chunkedStr = chunkArr.join(" ");
+  //const reversedString = reverseChunk(chunkedStr);
+  const reversedString = reverseChunk(str);
+  const sortedString = sort(reversedString);
+  return sortedString;
 }
 evaluate(scramble, scrambleTests);

@@ -11,5 +11,20 @@ const sortTests = [
 ];
 function sort(str) {
   // write me!
+  let newArr = str.split(" ");
+  function sort(str) {
+    let arrstr = str.split("");
+    let sortedstr = arrstr.sort();
+
+    if (typeof sortedstr[0] === "integer") {
+      sortedstr.sort(function(a, b) {
+        return a - b;
+      });
+    }
+
+    return sortedstr.join("");
+  }
+  const sortedString = newArr.map(sort);
+  return sortedString.join(" ");
 }
 evaluate(sort, sortTests);
